@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            const messageList = document.getElementById('message-list');
+
+            messages.forEach(message => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${message.date} - ${message.name} (${message.email}): ${message.message}`;
+                messageList.appendChild(listItem);
+            });
+
+            const payments = JSON.parse(localStorage.getItem('payments')) || [];
+            const paymentList = document.getElementById('payment-list');
+
+            payments.forEach(payment => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `<strong>User:</strong> ${payment.username}<br>
+                                      <strong>Email:</strong> ${payment.email}<br>
+                                      <strong>Plan:</strong> ${payment.plan}<br>
+                                      <strong>Amount:</strong> ${payment.amount}<br>
+                                      <strong>Date:</strong> ${payment.date}`;
+                paymentList.appendChild(listItem);
+            });
+        });
+
+        function openRegisteredAccounts() {
+            window.location.href = 'registered-accounts.html';
+        }
+
+        function resetAccounts() {
+            if (confirm('Are you sure you want to reset and delete all accounts?')) {
+                localStorage.removeItem('users');
+                alert('All accounts have been reset and deleted.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Admin Page</h1>
+    </header>
+    <main>
+        <section>
+            <h2>User Messages and Suggestions</h2>
+            <ul id="message-list"></ul>
+        </section>
+        <section>
+            <button class="register-button" onclick="openRegisteredAccounts()">Registered Accounts</button>
+            <button class="reset-button" onclick="resetAccounts()">Reset Accounts</button>
+        </section>
+        <section>
+            <h2>Payment Forms</h2>
+            <ul id="payment-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Practice Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

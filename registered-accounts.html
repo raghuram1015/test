@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registered Accounts</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userList = document.getElementById('user-list');
+            const searchInput = document.getElementById('search-input');
+
+            function displayUsers(filteredUsers) {
+                userList.innerHTML = '';
+                filteredUsers.forEach(user => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>Username:</strong> ${user.username}<br>
+                                          <strong>Email:</strong> ${user.email}<br>
+                                          <strong>Mobile Number:</strong> ${user.mobile}`;
+                    userList.appendChild(listItem);
+                });
+            }
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const filteredUsers = users.filter(user => 
+                    user.username.toLowerCase().includes(searchTerm) ||
+                    user.email.toLowerCase().includes(searchTerm) ||
+                    user.mobile.toLowerCase().includes(searchTerm)
+                );
+                displayUsers(filteredUsers);
+            });
+
+            displayUsers(users);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Registered Accounts</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Search Accounts</h2>
+            <input type="text" id="search-input" placeholder="Search by username, email, or mobile number">
+            <ul id="user-list"></ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Practice Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

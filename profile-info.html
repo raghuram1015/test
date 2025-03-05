@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Info</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email');
+            const mobile = localStorage.getItem('mobile');
+            const createdDate = localStorage.getItem('createdDate');
+            const isPremium = localStorage.getItem('isPremium') === 'true';
+
+            if (username) {
+                document.getElementById('profile-username').innerText = username;
+                document.getElementById('profile-email').innerText = email;
+                document.getElementById('profile-mobile').innerText = mobile;
+                document.getElementById('profile-created-date').innerText = createdDate;
+                document.getElementById('profile-premium').innerText = isPremium ? 'Yes' : 'No';
+            }
+        });
+
+        function openOtherOptions() {
+            window.location.href = 'other-options.html';
+        }
+    </script>
+</head>
+<body class="profile-page">
+    <header>
+        <h1>Profile Info</h1>
+    </header>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="#" onclick="openOtherOptions()">Other Options</a>
+    </div>
+    <main>
+        <section>
+            <h2>Your Profile Information</h2>
+            <p><strong>Username:</strong> <span id="profile-username"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <p><strong>Mobile Number:</strong> <span id="profile-mobile"></span></p>
+            <p><strong>Account Created On:</strong> <span id="profile-created-date"></span></p>
+            <p><strong>Premium Account:</strong> <span id="profile-premium"></span></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Practice Website. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

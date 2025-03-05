@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        window.onload = function() {
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email');
+            const mobile = localStorage.getItem('mobile');
+            if (username) {
+                document.getElementById('profile-username-display').innerText = username;
+                document.getElementById('profile-email').innerText = email;
+                document.getElementById('profile-mobile').innerText = mobile;
+            }
+        }
+
+        function openProfileOptions() {
+            window.location.href = 'profile-options.html';
+        }
+
+        function openOtherOptions() {
+            window.location.href = 'other-options.html';
+        }
+    </script>
+</head>
+<body class="profile-page">
+    <header>
+        <h1>Welcome to Your Profile Page</h1>
+    </header>
+    <div class="navbar">
+        <div class="navbar-left">
+            <a href="index.html">Home</a>
+            <a href="#" onclick="openOtherOptions()">Other Option</a>
+        </div>
+        <div class="navbar-right">
+            <span id="profile-username"></span>
+            <a href="#" onclick="openProfileOptions()">Profile</a>
+        </div>
+    </div>
+    <main>
+        <section>
+            <h2>Your Details</h2>
+            <p><strong>Username:</strong> <span id="profile-username-display"></span></p>
+            <p><strong>Email:</strong> <span id="profile-email"></span></p>
+            <p><strong>Mobile Number:</strong> <span id="profile-mobile"></span></p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Practice Website. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

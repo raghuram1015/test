@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Username</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function handleUsername(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            localStorage.setItem('username', username);
+            alert('Username saved successfully!');
+            window.location.href = 'profile.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Create Username</h1>
+    </header>
+    <main>
+        <div class="username-box">
+            <form onsubmit="handleUsername(event)">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <br><br>
+                <button type="submit">Save Username</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Next Website. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

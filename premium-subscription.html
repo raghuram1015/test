@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Subscription</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function openTransactionPage(plan, amount) {
+            localStorage.setItem('selectedPlan', plan);
+            localStorage.setItem('selectedAmount', amount);
+            window.location.href = 'transaction.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Premium Subscription</h1>
+    </header>
+    <div class="navbar">
+        <a href="index.html" target="_self">Home</a>
+        <a href="profile.html" target="_self">Profile</a>
+        <a href="other-options.html" target="_self">Other Options</a>
+    </div>
+    <main>
+        <section>
+            <h2>Choose Your Plan</h2>
+            <div class="plan">
+                <h3>Basic Plan</h3>
+                <p>Access to all basic tutorials and articles.</p>
+                <p><strong>Price:</strong> $9.99/month</p>
+                <button class="buy-button" onclick="openTransactionPage('Basic Plan', '$9.99/month')">Buy Now</button>
+            </div>
+            <div class="plan">
+                <h3>Pro Plan</h3>
+                <p>Access to all tutorials, articles, and premium content.</p>
+                <p><strong>Price:</strong> $19.99/month</p>
+                <button class="buy-button" onclick="openTransactionPage('Pro Plan', '$19.99/month')">Buy Now</button>
+            </div>
+            <div class="plan">
+                <h3>Ultimate Plan</h3>
+                <p>Access to all content, one-on-one sessions, and exclusive webinars.</p>
+                <p><strong>Price:</strong> $29.99/month</p>
+                <button class="buy-button" onclick="openTransactionPage('Ultimate Plan', '$29.99/month')">Buy Now</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Practice Website. All rights reserved.</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
